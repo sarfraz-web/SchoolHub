@@ -62,17 +62,17 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Mobile Header */}
-      <div className="lg:hidden bg-white shadow-sm border-b">
+      {/* Mobile Header - Only show on small screens */}
+      <div className="md:hidden bg-white shadow-sm border-b">
         <div className="px-4 py-4">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center space-x-3">
             <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
               </svg>
             </div>
-            <div>
+            <div className="text-center">
               <h1 className="text-xl font-bold text-gray-900">SchoolHub</h1>
               <p className="text-sm text-gray-600">School Management System</p>
             </div>
@@ -80,12 +80,12 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        {/* Left Section - Branding */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 lg:py-0 bg-white">
+      <div className="flex min-h-screen">
+        {/* Left Section - Branding (Hidden on mobile/tablet) */}
+        <div className="hidden lg:flex w-1/2 items-center justify-center px-8 py-0 bg-white">
           <div className="max-w-md w-full">
-            {/* Logo - Hidden on mobile, shown on desktop */}
-            <div className="hidden lg:flex items-center mb-8">
+            {/* Logo */}
+            <div className="flex items-center mb-8">
               <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -95,15 +95,15 @@ const Login = () => {
             </div>
             
             {/* App Name */}
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-center lg:text-left">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
               SchoolHub
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 mb-8 lg:mb-12 text-center lg:text-left leading-relaxed">
+            <p className="text-lg text-gray-600 mb-12 leading-relaxed">
               Comprehensive School Management System for modern educational institutions
             </p>
             
             {/* Features Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 gap-6">
               <div className="flex items-start space-x-3">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,8 +111,8 @@ const Login = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Multi-Role Access</h3>
-                  <p className="text-xs sm:text-sm text-gray-600">Admin, Teacher, Student, Parent</p>
+                  <h3 className="font-semibold text-gray-900">Multi-Role Access</h3>
+                  <p className="text-sm text-gray-600">Admin, Teacher, Student, Parent</p>
                 </div>
               </div>
               
@@ -123,8 +123,8 @@ const Login = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Grade Management</h3>
-                  <p className="text-xs sm:text-sm text-gray-600">Complete academic tracking</p>
+                  <h3 className="font-semibold text-gray-900">Grade Management</h3>
+                  <p className="text-sm text-gray-600">Complete academic tracking</p>
                 </div>
               </div>
               
@@ -135,8 +135,8 @@ const Login = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Real-time Updates</h3>
-                  <p className="text-xs sm:text-sm text-gray-600">Instant notifications</p>
+                  <h3 className="font-semibold text-gray-900">Real-time Updates</h3>
+                  <p className="text-sm text-gray-600">Instant notifications</p>
                 </div>
               </div>
               
@@ -148,18 +148,18 @@ const Login = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Attendance Tracking</h3>
-                  <p className="text-xs sm:text-sm text-gray-600">Automated monitoring</p>
+                  <h3 className="font-semibold text-gray-900">Attendance Tracking</h3>
+                  <p className="text-sm text-gray-600">Automated monitoring</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
-        {/* Right Section - Login Form */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
+        {/* Right Section - Login Form (Full width on mobile/tablet) */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
           <div className="w-full max-w-md">
-            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-6 sm:p-8">
+            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">
                 Welcome to SchoolHub
               </h2>
@@ -258,16 +258,27 @@ const Login = () => {
               
               {/* Demo Accounts */}
               <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
-                <h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3 text-center">
-                  Demo Accounts:
+                <h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-3 sm:mb-4 text-center">
+                  Demo Accounts - Click to use:
                 </h3>
-                <div className="space-y-1 sm:space-y-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {demoAccounts.map((account) => (
-                    <div key={account.role} className="text-xs sm:text-sm text-gray-600 bg-gray-50 p-2 sm:p-3 rounded text-center">
-                      <div className="font-semibold text-gray-900">{account.role}:</div>
-                      <div className="text-gray-600">{account.email}</div>
-                      <div className="text-gray-500">Password: {account.password}</div>
-                    </div>
+                    <button
+                      key={account.role}
+                      type="button"
+                      onClick={() => {
+                        setFormData({
+                          ...formData,
+                          email: account.email,
+                          password: account.password
+                        });
+                      }}
+                      className="text-xs sm:text-sm text-gray-700 bg-gray-50 hover:bg-blue-50 hover:border-blue-200 border border-gray-200 p-2 sm:p-3 rounded-lg transition-colors text-left"
+                    >
+                      <div className="font-semibold text-gray-900 mb-1">{account.role}</div>
+                      <div className="text-gray-600 text-xs">{account.email}</div>
+                      <div className="text-gray-500 text-xs">Password: {account.password}</div>
+                    </button>
                   ))}
                 </div>
               </div>
