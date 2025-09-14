@@ -117,44 +117,45 @@ const Notices = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Notices & Announcements</h1>
+      <div className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Notices & Announcements</h1>
             {canCreateEdit && (
-              <Button onClick={() => setIsModalOpen(true)}>
+              <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto">
                 Create New Notice
               </Button>
             )}
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {notices.map((notice) => (
-              <div key={notice.id} className="bg-white rounded-lg shadow p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900">{notice.title}</h3>
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getPriorityColor(notice.priority)}`}>
+              <div key={notice.id} className="bg-white rounded-lg shadow p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4 gap-3 sm:gap-0">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 truncate">{notice.title}</h3>
+                      <span className={`inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium border ${getPriorityColor(notice.priority)} w-fit`}>
                         {notice.priority.toUpperCase()}
                       </span>
                     </div>
-                    <p className="text-gray-600 mb-3">{notice.content}</p>
-                    <div className="flex items-center text-sm text-gray-500 space-x-4">
+                    <p className="text-sm sm:text-base text-gray-600 mb-3">{notice.content}</p>
+                    <div className="flex flex-col sm:flex-row sm:items-center text-xs sm:text-sm text-gray-500 space-y-1 sm:space-y-0 sm:space-x-4">
                       <span>By: {notice.createdByName || 'Unknown'}</span>
-                      <span>•</span>
+                      <span className="hidden sm:inline">•</span>
                       <span>{new Date(notice.createdAt).toLocaleDateString()}</span>
-                      <span>•</span>
+                      <span className="hidden sm:inline">•</span>
                       <span>Target: {notice.targetRoles.join(', ')}</span>
                     </div>
                   </div>
                   
                   {canCreateEdit && (
-                    <div className="flex items-center space-x-2 ml-4">
+                    <div className="flex items-center space-x-2 sm:ml-4">
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => handleEdit(notice)}
+                        className="text-xs sm:text-sm px-2 sm:px-3"
                       >
                         Edit
                       </Button>
@@ -163,6 +164,7 @@ const Notices = () => {
                           variant="danger"
                           size="sm"
                           onClick={() => handleDelete(notice.id)}
+                          className="text-xs sm:text-sm px-2 sm:px-3"
                         >
                           Delete
                         </Button>
@@ -175,8 +177,8 @@ const Notices = () => {
           </div>
 
           {notices.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No notices found</p>
+            <div className="text-center py-8 sm:py-12">
+              <p className="text-gray-500 text-sm sm:text-base">No notices found</p>
             </div>
           )}
         </div>
@@ -208,7 +210,7 @@ const Notices = () => {
               value={formData.content}
               onChange={handleChange}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
               placeholder="Enter notice content"
               required
             />
@@ -222,7 +224,7 @@ const Notices = () => {
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -243,7 +245,7 @@ const Notices = () => {
                   onChange={handleTargetRolesChange}
                   className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 />
-                <span className="ml-2 text-sm text-gray-700">All Users</span>
+                <span className="ml-2 text-xs sm:text-sm text-gray-700">All Users</span>
               </label>
               <label className="flex items-center">
                 <input
@@ -254,7 +256,7 @@ const Notices = () => {
                   disabled={formData.targetRoles.includes('all')}
                   className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 disabled:opacity-50"
                 />
-                <span className="ml-2 text-sm text-gray-700">Admins</span>
+                <span className="ml-2 text-xs sm:text-sm text-gray-700">Admins</span>
               </label>
               <label className="flex items-center">
                 <input
@@ -265,7 +267,7 @@ const Notices = () => {
                   disabled={formData.targetRoles.includes('all')}
                   className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 disabled:opacity-50"
                 />
-                <span className="ml-2 text-sm text-gray-700">Teachers</span>
+                <span className="ml-2 text-xs sm:text-sm text-gray-700">Teachers</span>
               </label>
               <label className="flex items-center">
                 <input
@@ -276,7 +278,7 @@ const Notices = () => {
                   disabled={formData.targetRoles.includes('all')}
                   className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 disabled:opacity-50"
                 />
-                <span className="ml-2 text-sm text-gray-700">Students</span>
+                <span className="ml-2 text-xs sm:text-sm text-gray-700">Students</span>
               </label>
               <label className="flex items-center">
                 <input
@@ -287,16 +289,16 @@ const Notices = () => {
                   disabled={formData.targetRoles.includes('all')}
                   className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 disabled:opacity-50"
                 />
-                <span className="ml-2 text-sm text-gray-700">Parents</span>
+                <span className="ml-2 text-xs sm:text-sm text-gray-700">Parents</span>
               </label>
             </div>
           </div>
           
-          <div className="flex justify-end space-x-3 pt-4">
-            <Button type="button" variant="outline" onClick={resetForm}>
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
+            <Button type="button" variant="outline" onClick={resetForm} className="w-full sm:w-auto">
               Cancel
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="w-full sm:w-auto">
               {editingNotice ? 'Update' : 'Create'} Notice
             </Button>
           </div>

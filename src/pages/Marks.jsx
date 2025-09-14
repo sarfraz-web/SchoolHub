@@ -69,57 +69,57 @@ const Marks = () => {
 
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">My Exam Results</h1>
+        <div className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+          <div className="py-4 sm:py-6">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">My Exam Results</h1>
             
-            <div className="bg-white p-6 rounded-lg shadow mb-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Performance Summary</h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow mb-6 sm:mb-8">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Performance Summary</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-blue-600">{averageMarks}%</p>
-                  <p className="text-sm text-gray-500">Average</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-blue-600">{averageMarks}%</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Average</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-green-600">{studentMarks.length}</p>
-                  <p className="text-sm text-gray-500">Exams</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-green-600">{studentMarks.length}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Exams</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-purple-600">
+                  <p className="text-2xl sm:text-3xl font-bold text-purple-600">
                     {studentMarks.filter(m => m.marks >= 80).length}
                   </p>
-                  <p className="text-sm text-gray-500">A Grades</p>
+                  <p className="text-xs sm:text-sm text-gray-500">A Grades</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-orange-600">
+                  <p className="text-2xl sm:text-3xl font-bold text-orange-600">
                     {studentMarks.filter(m => m.marks < 60).length}
                   </p>
-                  <p className="text-sm text-gray-500">Below 60%</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Below 60%</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-white shadow overflow-hidden sm:rounded-md">
-              <div className="px-4 py-5 sm:px-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">Detailed Results</h3>
+              <div className="px-4 sm:px-6 py-4 sm:py-5">
+                <h3 className="text-base sm:text-lg leading-6 font-medium text-gray-900">Detailed Results</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Exam
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Subject
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Date
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Marks
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Grade
                       </th>
                     </tr>
@@ -131,20 +131,20 @@ const Marks = () => {
                       
                       return (
                         <tr key={mark.id}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm font-medium text-gray-900">
                             {exam.name}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
                             {exam.subject}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
                             {new Date(exam.date).toLocaleDateString()}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900">
                             {mark.marks}/{mark.maxMarks}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`text-sm font-medium ${getGradeColor(mark.marks)}`}>
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                            <span className={`text-xs sm:text-sm font-medium ${getGradeColor(mark.marks)}`}>
                               {getGrade(mark.marks)}
                             </span>
                           </td>
@@ -181,59 +181,59 @@ const Marks = () => {
 
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">
+        <div className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+          <div className="py-4 sm:py-6">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
               {parentStudent.name}'s Exam Results
             </h1>
             
-            <div className="bg-white p-6 rounded-lg shadow mb-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Performance Summary</h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow mb-6 sm:mb-8">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Performance Summary</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-blue-600">{averageMarks}%</p>
-                  <p className="text-sm text-gray-500">Average</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-blue-600">{averageMarks}%</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Average</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-green-600">{childMarks.length}</p>
-                  <p className="text-sm text-gray-500">Exams</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-green-600">{childMarks.length}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Exams</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-purple-600">
+                  <p className="text-2xl sm:text-3xl font-bold text-purple-600">
                     {childMarks.filter(m => m.marks >= 80).length}
                   </p>
-                  <p className="text-sm text-gray-500">A Grades</p>
+                  <p className="text-xs sm:text-sm text-gray-500">A Grades</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-orange-600">
+                  <p className="text-2xl sm:text-3xl font-bold text-orange-600">
                     {childMarks.filter(m => m.marks < 60).length}
                   </p>
-                  <p className="text-sm text-gray-500">Below 60%</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Below 60%</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-white shadow overflow-hidden sm:rounded-md">
-              <div className="px-4 py-5 sm:px-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">Detailed Results</h3>
+              <div className="px-4 sm:px-6 py-4 sm:py-5">
+                <h3 className="text-base sm:text-lg leading-6 font-medium text-gray-900">Detailed Results</h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Exam
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Subject
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Date
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Marks
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Grade
                       </th>
                     </tr>
@@ -245,20 +245,20 @@ const Marks = () => {
                       
                       return (
                         <tr key={mark.id}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm font-medium text-gray-900">
                             {exam.name}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
                             {exam.subject}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
                             {new Date(exam.date).toLocaleDateString()}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900">
                             {mark.marks}/{mark.maxMarks}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`text-sm font-medium ${getGradeColor(mark.marks)}`}>
+                          <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                            <span className={`text-xs sm:text-sm font-medium ${getGradeColor(mark.marks)}`}>
                               {getGrade(mark.marks)}
                             </span>
                           </td>
@@ -278,15 +278,15 @@ const Marks = () => {
   // For teachers and admins - show all marks with filtering
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Marks Management</h1>
+      <div className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Marks Management</h1>
             <div className="flex items-center space-x-4">
               <select
                 value={selectedStudent}
                 onChange={(e) => setSelectedStudent(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base w-full sm:w-auto"
               >
                 <option value="">All Students</option>
                 {students.map((student) => (
@@ -299,8 +299,8 @@ const Marks = () => {
           </div>
 
           <div className="bg-white shadow overflow-hidden sm:rounded-md">
-            <div className="px-4 py-5 sm:px-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
+            <div className="px-4 sm:px-6 py-4 sm:py-5">
+              <h3 className="text-base sm:text-lg leading-6 font-medium text-gray-900">
                 {selectedStudent ? `${getStudentName(selectedStudent)}'s Marks` : 'All Marks'}
               </h3>
             </div>
@@ -308,22 +308,22 @@ const Marks = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Student
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Exam
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Subject
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Date
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Marks
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Grade
                     </th>
                   </tr>
@@ -335,23 +335,23 @@ const Marks = () => {
                     
                     return (
                       <tr key={mark.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm font-medium text-gray-900">
                           {getStudentName(mark.studentId)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900">
                           {exam.name}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
                           {exam.subject}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-500">
                           {new Date(exam.date).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900">
                           {mark.marks}/{mark.maxMarks}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className={`text-sm font-medium ${getGradeColor(mark.marks)}`}>
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                          <span className={`text-xs sm:text-sm font-medium ${getGradeColor(mark.marks)}`}>
                             {getGrade(mark.marks)}
                           </span>
                         </td>
@@ -364,8 +364,8 @@ const Marks = () => {
           </div>
 
           {marks.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No marks found</p>
+            <div className="text-center py-8 sm:py-12">
+              <p className="text-gray-500 text-sm sm:text-base">No marks found</p>
             </div>
           )}
         </div>

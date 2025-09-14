@@ -84,11 +84,11 @@ const StudentsList = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Students</h1>
-            <Button onClick={() => setIsModalOpen(true)}>
+      <div className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Students</h1>
+            <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto">
               Add New Student
             </Button>
           </div>
@@ -97,47 +97,55 @@ const StudentsList = () => {
             <ul className="divide-y divide-gray-200">
               {students.map((student) => (
                 <li key={student.id}>
-                  <div className="px-4 py-4 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
-                          <span className="text-white font-semibold">
-                            {student.name.charAt(0)}
-                          </span>
+                  <div className="px-3 sm:px-4 py-3 sm:py-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                          <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-500 flex items-center justify-center">
+                            <span className="text-white font-semibold text-sm sm:text-base">
+                              {student.name.charAt(0)}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="ml-3 sm:ml-4 min-w-0 flex-1">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                            <Link
+                              to={`/students/${student.id}`}
+                              className="text-sm sm:text-base font-medium text-blue-600 hover:text-blue-500 truncate"
+                            >
+                              {student.name}
+                            </Link>
+                            <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 w-fit">
+                              {student.studentId}
+                            </span>
+                          </div>
+                          <div className="text-xs sm:text-sm text-gray-500 mt-1">
+                            <div className="truncate">{student.email}</div>
+                            <div className="sm:hidden">{student.class}</div>
+                          </div>
+                          <div className="hidden sm:block text-sm text-gray-500">
+                            {student.email} • {student.class}
+                          </div>
                         </div>
                       </div>
-                      <div className="ml-4">
-                        <div className="flex items-center">
-                          <Link
-                            to={`/students/${student.id}`}
-                            className="text-sm font-medium text-blue-600 hover:text-blue-500"
-                          >
-                            {student.name}
-                          </Link>
-                          <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            {student.studentId}
-                          </span>
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {student.email} • {student.class}
-                        </div>
+                      <div className="flex items-center space-x-2 sm:ml-4">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleEdit(student)}
+                          className="flex-1 sm:flex-none text-xs sm:text-sm"
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => handleDelete(student.id)}
+                          className="flex-1 sm:flex-none text-xs sm:text-sm"
+                        >
+                          Delete
+                        </Button>
                       </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleEdit(student)}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => handleDelete(student.id)}
-                      >
-                        Delete
-                      </Button>
                     </div>
                   </div>
                 </li>
@@ -146,8 +154,8 @@ const StudentsList = () => {
           </div>
 
           {students.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No students found</p>
+            <div className="text-center py-8 sm:py-12">
+              <p className="text-gray-500 text-sm sm:text-base">No students found</p>
             </div>
           )}
         </div>
@@ -160,7 +168,7 @@ const StudentsList = () => {
         size="lg"
       >
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <Input
               label="Full Name"
               name="name"
@@ -237,11 +245,11 @@ const StudentsList = () => {
             />
           </div>
           
-          <div className="flex justify-end space-x-3 pt-4">
-            <Button type="button" variant="outline" onClick={resetForm}>
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
+            <Button type="button" variant="outline" onClick={resetForm} className="w-full sm:w-auto">
               Cancel
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="w-full sm:w-auto">
               {editingStudent ? 'Update' : 'Create'} Student
             </Button>
           </div>

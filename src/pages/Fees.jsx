@@ -101,71 +101,71 @@ const Fees = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">
+      <div className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
               {user.role === 'admin' ? 'Fees Management' : 'My Fees'}
             </h1>
             {canCreateFees && (
-              <Button onClick={() => setIsModalOpen(true)}>
+              <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto">
                 Add New Fee
               </Button>
             )}
           </div>
 
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-lg font-semibold text-gray-900">Total Fees</h3>
-              <p className="text-3xl font-bold text-blue-600">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+              <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Total Fees</h3>
+              <p className="text-2xl sm:text-3xl font-bold text-blue-600">
                 ${(getTotalPending() + getTotalPaid()).toFixed(2)}
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-lg font-semibold text-gray-900">Pending</h3>
-              <p className="text-3xl font-bold text-red-600">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+              <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Pending</h3>
+              <p className="text-2xl sm:text-3xl font-bold text-red-600">
                 ${getTotalPending().toFixed(2)}
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-lg font-semibold text-gray-900">Paid</h3>
-              <p className="text-3xl font-bold text-green-600">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+              <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Paid</h3>
+              <p className="text-2xl sm:text-3xl font-bold text-green-600">
                 ${getTotalPaid().toFixed(2)}
               </p>
             </div>
           </div>
 
           <div className="bg-white shadow overflow-hidden sm:rounded-md">
-            <div className="px-4 py-5 sm:px-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
+            <div className="px-4 sm:px-6 py-4 sm:py-5">
+              <h3 className="text-base sm:text-lg leading-6 font-medium text-gray-900">
                 {user.role === 'admin' ? 'All Fees' : 'My Fee Records'}
               </h3>
             </div>
             <ul className="divide-y divide-gray-200">
               {fees.map((fee) => (
-                <li key={fee.id} className="px-4 py-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <h4 className="text-sm font-medium text-gray-900">
+                <li key={fee.id} className="px-3 sm:px-4 py-3 sm:py-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
+                        <h4 className="text-xs sm:text-sm font-medium text-gray-900 truncate">
                           {fee.description}
                         </h4>
                         {fee.isPaid ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 w-fit">
                             Paid
                           </span>
                         ) : isOverdue(fee.dueDate) ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                          <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 w-fit">
                             Overdue
                           </span>
                         ) : (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 w-fit">
                             Pending
                           </span>
                         )}
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-xs sm:text-sm text-gray-500">
                         {user.role === 'admin' && (
                           <span>Student: {fee.studentName} • </span>
                         )}
@@ -177,8 +177,8 @@ const Fees = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-semibold text-gray-900">
+                    <div className="flex items-center justify-between sm:justify-end space-x-2">
+                      <span className="text-base sm:text-lg font-semibold text-gray-900">
                         ${fee.amount.toFixed(2)}
                       </span>
                       {!fee.isPaid && canMarkPaid && (
@@ -186,6 +186,7 @@ const Fees = () => {
                           variant="success"
                           size="sm"
                           onClick={() => handleMarkAsPaid(fee.id)}
+                          className="text-xs sm:text-sm px-2 sm:px-3"
                         >
                           Mark as Paid
                         </Button>
@@ -198,8 +199,8 @@ const Fees = () => {
           </div>
 
           {fees.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No fees found</p>
+            <div className="text-center py-8 sm:py-12">
+              <p className="text-gray-500 text-sm sm:text-base">No fees found</p>
             </div>
           )}
         </div>
@@ -220,7 +221,7 @@ const Fees = () => {
               name="studentId"
               value={formData.studentId}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
               required
             >
               <option value="">Select a student</option>
@@ -262,11 +263,11 @@ const Fees = () => {
             required
           />
           
-          <div className="flex justify-end space-x-3 pt-4">
-            <Button type="button" variant="outline" onClick={resetForm}>
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
+            <Button type="button" variant="outline" onClick={resetForm} className="w-full sm:w-auto">
               Cancel
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="w-full sm:w-auto">
               Create Fee
             </Button>
           </div>
